@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <title>Crystal Game</title>
+
+</head>
+
+<body>
+    <h1>Welcome to the Crystal Game!</h1>
+    <div id="info">
+        <p>Each crystal has a random number assigned to it. Click on a crystal to add its number to your counter. If the counter
+            equals the target number, then you get one win, but if the counter exceeds the target, then you get a loss. Good
+            luck!
+        </p>
+    </div>
+    <div class="starter">Target Number: </div>
+    <div id="targetNumber"> 0</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div id="redCrystal" class="crystalButton">
+                    <img width="133" height="150" src="assets/images/Scarlet_Crystal.png" alt="Red Crystal">
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div id="blueCrystal" class="crystalButton">
+                    <img width="133" height="150" src="assets/images/Azure_Crystal.png" alt="Blue Crystal">
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div id="greenCrystal" class="crystalButton">
+                    <img width="133" height="150" src="assets/images/Verdant_Crystal.png" alt="Green Crystal">
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div id="grayCrystal" class="crystalButton">
+                    <img width="133" height="150" src="assets/images/Gray_Crystal.png" alt="Gray Crystal">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>Current counter: </div>
+    <div id="counter"> 0</div>
+    <div>Wins:</div>
+    <div id="wins">0 </div>
+    <div>Losses: </div>
+    <div id="losses">0 </div>
+</body>
+
+<script>
+
+    var redRNG = Math.floor(Math.random() * 12) + 1;
+    var blueRNG = Math.floor(Math.random() * 12) + 1;
+    var greenRNG = Math.floor(Math.random() * 12) + 1;
+    var grayRNG = Math.floor(Math.random() * 12) + 1;
+
+    $(document).ready(function () {
+        var computerTarget = Math.floor(Math.random() * 102) + 19;
+        $("#targetNumber").text(computerTarget);
+        console.log(redRNG);
+        console.log(blueRNG);
+        console.log(greenRNG);
+        console.log(grayRNG);
+
+    })
+
+    $("#redCrystal").on("click", function () {
+        var redResult = parseInt(redRNG) + parseInt($("#counter").text());
+        $("#counter").text(redResult);
+    });
+
+    $("#blueCrystal").on("click", function () {
+        var blueResult = parseInt(blueRNG) + parseInt($("#counter").text());
+        $("#counter").text(blueResult);
+    });
+
+    $("#greenCrystal").on("click", function () {
+        var greenResult = parseInt(greenRNG) + parseInt($("#counter").text());
+        $("#counter").text(greenResult);
+    });
+
+    $("#grayCrystal").on("click", function () {
+        var grayResult = parseInt(grayRNG) + parseInt($("#counter").text());
+        $("#counter").text(grayResult);
+    });
+
+
+</script>
+
+</html>
