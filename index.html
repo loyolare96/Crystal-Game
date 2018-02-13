@@ -16,242 +16,85 @@
 </head>
 
 <body>
-    <h1>Welcome to the Crystal Game!</h1>
-    <div id="info">
-        <p>Each crystal has a random number assigned to it. Click on a crystal to add its number to your counter. If the counter
-            equals the target number, then you get one win, but if the counter exceeds the target, then you get a loss. Good
-            luck!
-        </p>
+    <div class="container info">
+        <div id="info">
+            <div class="row">
+                <div class="col-lg-12"></div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4"></div>
+                <div class="col-lg-4">
+                    <div id="line1">
+                        <p>Welcome to the Crystal Game!</p>
+                    </div>
+                </div>
+                <div class="col-lg-4"></div>
+            </div>
+            <div class="row">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-8">
+                    <div id="line2">
+                        <p>Each crystal has a random number assigned to it. Click on a crystal to add its number to your counter.
+                            If the counter equals the target number, then you get one win, but if the counter exceeds the
+                            target, then you get a loss. Good luck!
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-2"></div>
+            </div>
+        </div>
     </div>
     <div class="container">
-        <div class="starter">Target Number: </div>
-        <div id="targetNumber"> </div>
         <div class="row">
-            <div class="col-lg-3">
+            <div class="col-lg-2">
                 <div id="redCrystal" class="crystalButton">
                     <img width="133" height="150" src="assets/images/Scarlet_Crystal.png" alt="Red Crystal">
                 </div>
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-2">
                 <div id="blueCrystal" class="crystalButton">
                     <img width="133" height="150" src="assets/images/Azure_Crystal.png" alt="Blue Crystal">
                 </div>
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-2">
                 <div id="greenCrystal" class="crystalButton">
                     <img width="133" height="150" src="assets/images/Verdant_Crystal.png" alt="Green Crystal">
                 </div>
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-2">
                 <div id="grayCrystal" class="crystalButton">
                     <img width="133" height="150" src="assets/images/Gray_Crystal.png" alt="Gray Crystal">
                 </div>
             </div>
+            <div class="col-lg-2"></div>
+            <div class="col-lg-2 startercol">
+                <div class="starter">Target Number: </div>
+                <div id="targetNumber"> </div>
+            </div>
         </div>
     </div>
-    <div>Current counter: </div>
-    <div id="counter"> 0</div>
-    <div>Wins:</div>
-    <div id="wins">0</div>
-    <div>Losses: </div>
-    <div id="losses">0</div>
+    <div class="container counters">
+        <div class="row">
+            <div class="col-lg-12">
+                <div>Current counter: </div>
+                <div id="counter"> 0</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div>Wins:</div>
+                <div id="wins">0</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div>Losses: </div>
+                <div id="losses">0</div>
+            </div>
+        </div>
+    </div>
 </body>
 
-<script>
-
-
-
-    redRNG = Math.floor(Math.random() * 12) + 1;
-    blueRNG = Math.floor(Math.random() * 12) + 1;
-    greenRNG = Math.floor(Math.random() * 12) + 1;
-    grayRNG = Math.floor(Math.random() * 12) + 1;
-    var computerTarget = Math.floor(Math.random() * 102) + 19;
-    var winVar = 1;
-    var lossVar = 1;
-
-    $(document).ready(function () {
-        $("#targetNumber").text(computerTarget);
-        console.log(redRNG);
-        console.log(blueRNG);
-        console.log(greenRNG);
-        console.log(grayRNG);
-
-    })
-
-    $("#redCrystal").on("click", function () {
-        var redResult = parseInt(redRNG) + parseInt($("#counter").text());
-        $("#counter").text(redResult);
-        if (($("#targetNumber").text()) == $("#counter").text()) {
-            alert("Well played!");
-            ($("#wins")).text(winVar++);
-            var computerTarget = Math.floor(Math.random() * 102) + 19;
-            $("#targetNumber").text(computerTarget);
-            $("#counter").text("0");
-            delete redRNG;
-            redRNG = Math.floor(Math.random() * 12) + 1;
-            console.log(redRNG);
-            delete blueRNG;
-            blueRNG = Math.floor(Math.random() * 12) + 1;
-            console.log(blueRNG);
-            delete greenRNG;
-            greenRNG = Math.floor(Math.random() * 12) + 1;
-            console.log(greenRNG);
-            delete grayRNG;
-            grayRNG = Math.floor(Math.random() * 12) + 1;
-            console.log(grayRNG);
-        }
-        else if (parseInt($("#targetNumber").text()) < parseInt($("#counter").text())) {
-            alert("Too bad!");
-            ($("#losses")).text(lossVar++);
-            var computerTarget = Math.floor(Math.random() * 102) + 19;
-            $("#targetNumber").text(computerTarget);
-            $("#counter").text("0");
-            delete redRNG;
-            redRNG = Math.floor(Math.random() * 12) + 1;
-            console.log(redRNG);
-            delete blueRNG;
-            blueRNG = Math.floor(Math.random() * 12) + 1;
-            console.log(blueRNG);
-            delete greenRNG;
-            greenRNG = Math.floor(Math.random() * 12) + 1;
-            console.log(greenRNG);
-            delete grayRNG;
-            grayRNG = Math.floor(Math.random() * 12) + 1;
-            console.log(grayRNG);
-        }
-    });
-
-    $("#blueCrystal").on("click", function () {
-        var blueResult = parseInt(blueRNG) + parseInt($("#counter").text());
-        $("#counter").text(blueResult);
-        if (($("#targetNumber").text()) == $("#counter").text()) {
-            alert("Well played!");
-            ($("#wins")).text(winVar++);
-            var computerTarget = Math.floor(Math.random() * 102) + 19;
-            $("#targetNumber").text(computerTarget);
-            $("#counter").text("0");
-            delete redRNG;
-            redRNG = Math.floor(Math.random() * 12) + 1;
-            console.log(redRNG);
-            delete blueRNG;
-            blueRNG = Math.floor(Math.random() * 12) + 1;
-            console.log(blueRNG);
-            delete greenRNG;
-            greenRNG = Math.floor(Math.random() * 12) + 1;
-            console.log(greenRNG);
-            delete grayRNG;
-            grayRNG = Math.floor(Math.random() * 12) + 1;
-            console.log(grayRNG);
-        }
-        else if (parseInt($("#targetNumber").text()) < parseInt($("#counter").text())) {
-            alert("Too bad!");
-            ($("#losses")).text(lossVar++);
-            var computerTarget = Math.floor(Math.random() * 102) + 19;
-            $("#targetNumber").text(computerTarget);
-            $("#counter").text("0");
-            delete redRNG;
-            redRNG = Math.floor(Math.random() * 12) + 1;
-            console.log(redRNG);
-            delete blueRNG;
-            blueRNG = Math.floor(Math.random() * 12) + 1;
-            console.log(blueRNG);
-            delete greenRNG;
-            greenRNG = Math.floor(Math.random() * 12) + 1;
-            console.log(greenRNG);
-            delete grayRNG;
-            grayRNG = Math.floor(Math.random() * 12) + 1;
-            console.log(grayRNG);
-        }
-    });
-
-    $("#greenCrystal").on("click", function () {
-        var greenResult = parseInt(greenRNG) + parseInt($("#counter").text());
-        $("#counter").text(greenResult);
-        if (($("#targetNumber").text()) == $("#counter").text()) {
-            alert("Well played!");
-            ($("#wins")).text(winVar++);
-            var computerTarget = Math.floor(Math.random() * 102) + 19;
-            $("#targetNumber").text(computerTarget);
-            $("#counter").text("0");
-            delete redRNG;
-            redRNG = Math.floor(Math.random() * 12) + 1;
-            console.log(redRNG);
-            delete blueRNG;
-            blueRNG = Math.floor(Math.random() * 12) + 1;
-            console.log(blueRNG);
-            delete greenRNG;
-            greenRNG = Math.floor(Math.random() * 12) + 1;
-            console.log(greenRNG);
-            delete grayRNG;
-            grayRNG = Math.floor(Math.random() * 12) + 1;
-            console.log(grayRNG);
-        }
-        else if (parseInt($("#targetNumber").text()) < parseInt($("#counter").text())) {
-            alert("Too bad!");
-            ($("#losses")).text(lossVar++);
-            var computerTarget = Math.floor(Math.random() * 102) + 19;
-            $("#targetNumber").text(computerTarget);
-            $("#counter").text("0");
-            delete redRNG;
-            redRNG = Math.floor(Math.random() * 12) + 1;
-            console.log(redRNG);
-            delete blueRNG;
-            blueRNG = Math.floor(Math.random() * 12) + 1;
-            console.log(blueRNG);
-            delete greenRNG;
-            greenRNG = Math.floor(Math.random() * 12) + 1;
-            console.log(greenRNG);
-            delete grayRNG;
-            grayRNG = Math.floor(Math.random() * 12) + 1;
-            console.log(grayRNG);
-        }
-    });
-
-    $("#grayCrystal").on("click", function () {
-        var grayResult = parseInt(grayRNG) + parseInt($("#counter").text());
-        $("#counter").text(grayResult);
-        if (($("#targetNumber").text()) == $("#counter").text()) {
-            alert("Well played!");
-            ($("#wins")).text(winVar++);
-            var computerTarget = Math.floor(Math.random() * 102) + 19;
-            $("#targetNumber").text(computerTarget);
-            $("#counter").text("0");
-            delete redRNG;
-            redRNG = Math.floor(Math.random() * 12) + 1;
-            console.log(redRNG);
-            delete blueRNG;
-            blueRNG = Math.floor(Math.random() * 12) + 1;
-            console.log(blueRNG);
-            delete greenRNG;
-            greenRNG = Math.floor(Math.random() * 12) + 1;
-            console.log(greenRNG);
-            delete grayRNG;
-            grayRNG = Math.floor(Math.random() * 12) + 1;
-            console.log(grayRNG);
-        }
-        else if (parseInt($("#targetNumber").text()) < parseInt($("#counter").text())) {
-            alert("Too bad!");
-            ($("#losses")).text(lossVar++);
-            var computerTarget = Math.floor(Math.random() * 102) + 19;
-            $("#targetNumber").text(computerTarget);
-            $("#counter").text("0");
-            delete redRNG;
-            redRNG = Math.floor(Math.random() * 12) + 1;
-            console.log(redRNG);
-            delete blueRNG;
-            blueRNG = Math.floor(Math.random() * 12) + 1;
-            console.log(blueRNG);
-            delete greenRNG;
-            greenRNG = Math.floor(Math.random() * 12) + 1;
-            console.log(greenRNG);
-            delete grayRNG;
-            grayRNG = Math.floor(Math.random() * 12) + 1;
-            console.log(grayRNG);
-        }
-    });
-
-
-
-</script>
+<script src="assets/javascript/game.js"></script>
 
 </html>
